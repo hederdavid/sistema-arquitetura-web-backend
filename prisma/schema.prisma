@@ -13,3 +13,90 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Cliente {
+  id String @id @default(cuid())
+  nome_completo String
+  email String @unique
+  cep String
+  logradouro String
+  cidade String
+  uf String
+  bairro String
+  numero String
+  complemento String?
+  telefones TelefoneCliente[]
+  projetos Projeto[]
+}
+
+model TelefoneCliente {
+  id String @id @default(cuid())
+  cliente_id String
+  numero String
+  cliente Cliente @relation(fields: [cliente_id], references: [id])
+}
+
+model Tarefa {
+  id String @id @default(cuid())
+  nome String
+  descricao String?
+  SubprojetoTarefas SubprojetoTarefa[]
+  exececucaoTarefa ExecucaoTarefa[]
+}
+
+model Subprojeto {
+  id String @id @default(cuid())
+  nome String
+  descricao String?
+  SubprojetoTarefas SubprojetoTarefa[]
+  exececucaoTarefa ExecucaoTarefa[]
+}
+
+model SubprojetoTarefa {
+  id String @id @default(cuid())
+  subprojeto_id String
+  tarefa_id String
+  subprojeto Subprojeto @relation(fields: [subprojeto_id], references: [id])
+  tarefa Tarefa @relation(fields: [tarefa_id], references: [id])
+  
+}
+
+model Projeto {
+  id String @id @default(cuid())
+  nome String
+  descricao String?
+  data_inicio DateTime
+  data_entrega_estimada DateTime?
+  data_entrega_final DateTime?
+  status ProjetoStatus
+  cliente_id String
+  cliente Cliente @relation(fields: [cliente_id], references: [id])
+  exececucaoTarefa ExecucaoTarefa[]
+}
+
+enum ProjetoStatus {
+  PENDENTE
+  EM_ANDAMENTO
+  CONCLUIDO
+  CANCELADO
+}
+
+model ExecucaoTarefa {
+  id String @id @default(cuid())
+  tarefa_id String
+  tarefa Tarefa @relation(fields: [tarefa_id], references: [id])
+  subprojeto_id String
+  subprojeto Subprojeto @relation(fields: [subprojeto_id], references: [id])
+  projeto_id String
+  projeto Projeto @relation(fields: [projeto_id], references: [id])
+  data_inicio DateTime
+  data_fim DateTime?
+  status ExecucaoTarefaStatus
+}
+
+enum ExecucaoTarefaStatus {
+  PENDENTE
+  EM_ANDAMENTO
+  CONCLUIDO
+  CANCELADO
+}
