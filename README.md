@@ -1,67 +1,117 @@
 <p align="center">
-  <img src="https://nestjs.com/img/logo-small.svg" width="100" alt="NestJS Logo" />
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
 
-<h1 align="center">Sistema Arquitetura 🏛️</h1>
+<h1 align="center">Sistema Arquitetura Web Backend</h1>
 
 <p align="center">
-  Sistema de gerenciamento de projetos arquitetônicos desenvolvido como trabalho acadêmico para a disciplina de Programação Web.
+  Um projeto acadêmico desenvolvido com o <a href="http://nestjs.com/" target="_blank">NestJS</a>, um framework progressivo para construir aplicações server-side eficientes e escaláveis.
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@nestjs/core" target="_blank">
-    <img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" />
-  </a>
-  <a href="https://circleci.com/gh/nestjs/nest" target="_blank">
-    <img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" />
-  </a>
-  <a href="https://www.npmjs.com/package/@nestjs/core" target="_blank">
-    <img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" />
-  </a>
-  <a href="https://swagger.io/" target="_blank">
-    <img src="https://img.shields.io/badge/docs-Swagger-85EA2D?logo=swagger&logoColor=white" alt="Swagger Docs" />
-  </a>
+  <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
+  <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
+  <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
+  <a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
 </p>
 
 ---
 
-## 🧾 Descrição
+## 📖 Descrição
 
-Este projeto é uma API RESTful desenvolvida com NestJS, com o objetivo de gerenciar projetos arquitetônicos. Foi criado como parte da disciplina de **Programação Web**.
+Este projeto é um backend desenvolvido com o framework [NestJS](https://nestjs.com/), utilizando TypeScript para criar uma aplicação modular, escalável e de fácil manutenção.
 
-A aplicação possui autenticação, validação de dados e operações CRUD completas para gerenciamento das entidades do sistema.
+## 🚀 Funcionalidades
 
----
-
-## 🚀 Tecnologias Utilizadas
-
-- [NestJS](https://nestjs.com/)
-- [PostgreSQL](https://www.postgresql.org/)
-- [Prisma ORM](https://www.prisma.io/)
-- [Swagger](https://swagger.io/) para documentação da API
+- Gerenciamento de clientes, projetos, subprojetos e tarefas.
+- Controle de execução de tarefas com status e datas.
+- Relacionamentos entre entidades como Cliente, Projeto, Subprojeto e Tarefa.
+- Suporte a operações CRUD para todas as entidades.
 
 ---
 
-## 🔐 Funcionalidades
+## 🛠️ Configuração do Projeto
 
-- ✅ Autenticação de usuários com JWT
-- ✅ CRUD completo de entidades (usuários, projetos, etc.)
-- ✅ Validações de entrada (DTOs com class-validator)
-- ✅ Documentação interativa da API com Swagger
+### Pré-requisitos
 
----
+Certifique-se de ter instalado:
 
-## 🛠️ Como executar o projeto
+- [Node.js](https://nodejs.org/) (versão LTS recomendada)
+- [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/)
 
-```
+### Instalação
+
+```bash
 # Instale as dependências
 $ npm install
+```
 
-# Rode o projeto em modo desenvolvimento
+### Executando o Projeto
+
+```bash
+# Ambiente de desenvolvimento
+$ npm run start
+
+# Modo de observação
 $ npm run start:dev
 
+# Ambiente de produção
+$ npm run start:prod
 ```
-Acesse a documentação da API após rodar o projeto:
 
+---
+
+## 🧪 Testes
+
+```bash
+# Testes unitários
+$ npm run test
+
+# Testes de integração (e2e)
+$ npm run test:e2e
+
+# Cobertura de testes
+$ npm run test:cov
 ```
-http://localhost:3000/api
+
+---
+
+## 📦 Implantação
+
+Para implantar a aplicação em produção, siga as melhores práticas descritas na [documentação oficial do NestJS](https://docs.nestjs.com/deployment).
+
+---
+
+## 📚 Recursos Úteis
+
+- [Documentação do NestJS](https://docs.nestjs.com)
+- [Canal no Discord](https://discord.gg/G7Qnnhy)
+- [Cursos oficiais](https://courses.nestjs.com/)
+- [Devtools do NestJS](https://devtools.nestjs.com)
+
+---
+
+## 👩‍💻 Equipe de Desenvolvimento
+
+Este projeto está sendo desenvolvido por:
+
+- Heder David
+- João Vittor Lemos
+- Júlia Carvalho
+- Rebeca Freitas
+
+---
+
+## 📚 Sobre o Projeto
+
+Este é um projeto acadêmico desenvolvido para a matéria **Programação Web**, ministrada pelo professor **Alexandro Costa**.
+
+---
+
+## 📄 Licença
+
+Este projeto está licenciado sob a [Licença MIT](https://opensource.org/licenses/MIT).
+
+---
+
+<p align="center">Feito com ❤️ pela equipe de desenvolvimento.</p>
