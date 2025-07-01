@@ -42,7 +42,8 @@ Certifique-se de ter instalado:
 ### Instalação
 
 ```bash
-# Instale as dependências
+# Instale as dependênciasgit push origin feature/clients
+
 $ npm install
 ```
 
