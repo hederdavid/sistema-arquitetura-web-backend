@@ -30,6 +30,11 @@ export class ClientResponseDto {
 
     @ApiProperty({ example: 'Apto 101', required: false })
     readonly complemento?: string;
+
+    @ApiProperty({
+        example: ['(77) 99999-9999', '(77) 88888-8888'],
+    })
+    readonly telefones: string[];
 }
 
 export class CreateClientResponseDto {
