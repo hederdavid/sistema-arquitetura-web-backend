@@ -36,8 +36,13 @@ export class ClientsController {
     CreateClientResponseDto,
   )
   @Post()
-  create(@Body() createClientDto: CreateClientDto) {
-    return this.clientsService.create(createClientDto);
+  async create(@Body() createClientDto: CreateClientDto): Promise<CreateClientResponseDto> {
+    const client = await this.clientsService.create(createClientDto);
+    return {
+      statusCode: 201,
+      message: 'Cliente criado com sucesso!',
+      client,
+    };
   }
 
   @ApiSearchOperation(

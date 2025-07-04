@@ -1,5 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
+  ArrayMinSize,
+  ArrayNotEmpty,
+  IsArray,
   IsEmail,
   IsNotEmpty,
   IsOptional,
@@ -55,5 +58,16 @@ export class CreateClientDto {
   @IsString()
   @IsOptional()
   @ApiProperty({ example: 'Apto 101', required: false })
-  readonly complemento?: string;
+  readonly complemento?: string | null;
+
+  @IsArray()
+  @ArrayNotEmpty()
+  @ArrayMinSize(1)
+  @IsString({ each: true })
+  @ApiProperty({
+    example: ['(77) 99999-9999', '(77) 88888-8888'],
+    description: 'Lista de telefones do cliente',
+    type: [String],
+  })
+  readonly telefones: string[];
 }
