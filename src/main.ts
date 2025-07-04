@@ -11,9 +11,9 @@ async function bootstrap() {
   const swaggerConfig = new DocumentBuilder()
     .setTitle('Servihub')
     .setDescription('...')
-    .addCookieAuth('refresh_token') // suporte a cookies (auth)
-    .addBearerAuth() // suporte a JWT
-    .addTag('Módulos') // organização por tags
+    .addCookieAuth('refresh_token')
+    .addBearerAuth()
+    .addTag('Módulos')
     .setVersion('0.2.0')
     .build();
 
