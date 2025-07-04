@@ -7,7 +7,7 @@ generator client {
 }
 
 model Cliente {
-  id String @id @default(cuid())
+  id String @id @default(uuid())
   nome_completo String
   email String @unique
   cep String
@@ -22,14 +22,14 @@ model Cliente {
 }
 
 model TelefoneCliente {
-  id String @id @default(cuid())
+  id String @id @default(uuid())
   cliente_id String
   numero String
   cliente Cliente @relation(fields: [cliente_id], references: [id])
 }
 
 model Tarefa {
-  id String @id @default(cuid())
+  id String @id @default(uuid())
   nome String
   descricao String?
   subprojetoTarefas SubprojetoTarefa[]
@@ -37,7 +37,7 @@ model Tarefa {
 }
 
 model Subprojeto {
-  id String @id @default(cuid())
+  id String @id @default(uuid())
   nome String
   descricao String?
   subprojetoTarefas SubprojetoTarefa[]
@@ -46,7 +46,7 @@ model Subprojeto {
 }
 
 model SubprojetoTarefa {
-  id String @id @default(cuid())
+  id String @id @default(uuid())
   subprojeto_id String
   tarefa_id String
   subprojeto Subprojeto @relation(fields: [subprojeto_id], references: [id])
@@ -54,7 +54,7 @@ model SubprojetoTarefa {
 }
 
 model Projeto {
-  id String @id @default(cuid())
+  id String @id @default(uuid())
   nome String
   descricao String?
   data_inicio DateTime
@@ -68,7 +68,7 @@ model Projeto {
 }
 
 model ProjetoSubprojeto {
-  id String @id @default(cuid())
+  id String @id @default(uuid())
   projeto_id String
   subprojeto_id String
   projeto Projeto @relation(fields: [projeto_id], references: [id])
@@ -83,7 +83,7 @@ enum ProjetoStatus {
 }
 
 model ExecucaoTarefa {
-  id String @id @default(cuid())
+  id String @id @default(uuid())
   tarefa_id String
   tarefa Tarefa @relation(fields: [tarefa_id], references: [id])
   subprojeto_id String
