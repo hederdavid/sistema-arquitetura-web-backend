@@ -12,6 +12,7 @@ import { ClientsService } from './clients.service';
 import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
 import {
+  ClientResponseDto,
   CreateClientResponseDto,
   DeleteClientResponseDto,
   SearchClientsResponseDto,
@@ -53,8 +54,8 @@ export class ClientsController {
     SearchClientsResponseDto,
   )
   @Get()
-  findAll() {
-    return this.clientsService.findAll();
+  async findAll(): Promise<SearchClientsResponseDto> {
+    return await this.clientsService.findAll();
   }
 
   @ApiSearchOperation(
@@ -62,11 +63,11 @@ export class ClientsController {
       summary: 'Busca um cliente por ID',
       description: 'Retorna os detalhes de um cliente específico pelo ID.',
     },
-    CreateClientResponseDto,
+    ClientResponseDto,
   )
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.clientsService.findOne(+id);
+  async findOne(@Param('id') id: string): Promise<ClientResponseDto> {
+    return await this.clientsService.findOne(id);
   }
 
   @ApiUpdateOperation(
@@ -78,8 +79,14 @@ export class ClientsController {
     UpdateClientResponseDto,
   )
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateClientDto: UpdateClientDto) {
-    return this.clientsService.update(+id, updateClientDto);
+  async update(@Param('id') id: string, @Body() updateClientDto: UpdateClientDto): Promise<UpdateClientResponseDto> {
+    const cliente = await this.clientsService.update(id, updateClientDto);
+
+    return {
+      statusCode: 200,
+      message: 'Cliente atualizado com sucesso!',
+      client: cliente,
+    }
   }
 
   @ApiDeleteOperation(
@@ -91,7 +98,12 @@ export class ClientsController {
     DeleteClientResponseDto,
   )
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.clientsService.remove(+id);
+  async remove(@Param('id') id: string): Promise<DeleteClientResponseDto> {
+    await this.clientsService.remove(id);
+
+    return {
+      statusCode: 200,
+      message: 'Cliente removido com sucesso!',
+    }
   }
 }

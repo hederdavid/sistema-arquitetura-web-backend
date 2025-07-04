@@ -26,7 +26,7 @@ model TelefoneCliente {
   id String @id @default(uuid())
   cliente_id String
   numero String
-  cliente Cliente @relation(fields: [cliente_id], references: [id])
+  cliente Cliente @relation(fields: [cliente_id], references: [id], onDelete: Cascade)
 }
 
 model Tarefa {
@@ -63,7 +63,7 @@ model Projeto {
   data_entrega_final DateTime?
   status ProjetoStatus
   cliente_id String
-  cliente Cliente @relation(fields: [cliente_id], references: [id])
+  cliente Cliente @relation(fields: [cliente_id], references: [id], onDelete: Cascade)
   execucaoTarefas ExecucaoTarefa[]
   projetoSubprojetos ProjetoSubprojeto[]
 }
